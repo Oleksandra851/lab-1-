@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 Повний список налаштувань та їх значень див.
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Створіть шляхи всередині проєкту ось так: BASE_DIR / 'subdir'.
@@ -75,7 +75,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mysite_db',
         'USER': 'postgres',
-        'PASSWORD': 'postgres_pass',
+        'PASSWORD': 'hrufherf23',
     }
 }
 
@@ -113,7 +113,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Тип поля первинного ключа за замовчуванням
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
